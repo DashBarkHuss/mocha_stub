@@ -7,6 +7,7 @@ const { expect } = chai;
 
 describe('stubbed /hi', () => {
   before(async () => {
+    delete require.cache[require.resolve('../../fileToTest.js')];
     sinon.stub(greeting, 'greeting').callsFake((req, res, next) => 'bye!');
     fileToTest = require('../../fileToTest.js');
   });
